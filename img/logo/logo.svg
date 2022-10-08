@@ -1,0 +1,17 @@
+<svg id="Logo" xmlns="http://www.w3.org/2000/svg" width="200" height="49" viewBox="0 0 250 49">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 35px;
+        fill: #2f4435;
+        font-family: Poppins;
+        font-weight: 700;
+      }
+
+      .cls-2 {
+        fill: #41b463;
+      }
+    </style>
+  </defs>
+  <text id="Bingle." class="cls-1" x="-1.698" y="35.938">Sell<tspan class="cls-2">Out</tspan>Daily</text>
+</svg>
