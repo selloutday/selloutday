@@ -1,6 +1,6 @@
 <?php
-
-$homedata=file_get_contents("https://api.selloutday.in/alison/user/getwebdata");
+$homedata="";
+//$homedata=file_get_contents("https://api.selloutday.in/alison/user/getwebdata");
 // ini_set('display_errors', 1);
 // ini_set('display_startup_errors', 1);
 // error_reporting(E_ALL);
