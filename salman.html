@@ -1,0 +1,16 @@
+<html>
+<head>
+    <script>
+        fetch('https://api.selloutday.in/alison/user/getwebdata')
+        .then(response => response.text())
+        .then(data => {
+          // Process the PHP content here
+          console.log(data);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+
+    </script>
+</head>
+</html>
