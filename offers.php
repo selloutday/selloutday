@@ -1,31 +1,33 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 
-$url = "https://api.selloutday.in/alison/user/getwebdata";
-$data = array('uid' => '1');
-$payload = json_encode($data);
-$ch = curl_init($url);
-curl_setopt($ch, CURLOPT_POST, 1);
-curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
-curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-$response = curl_exec($ch);
-curl_close($ch);
-if ($response == false) {
-echo "Sorry! Please try later , or call +91 9037631786";
- die();
-} else {
-$data = json_decode($response);
-$homedata="";
-if ($data !== null) {
-    $homedata=$data->homedata;
-} else {
-    echo "Sorry ! Please try later , or call +91 9037631786";
- die();
-}
-}
+$homedata=file_get_contents("https://api.selloutday.in/alison/user/getwebdata");
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
+
+// $url = "https://api.selloutday.in/alison/user/getwebdata";
+// $data = array('uid' => '1');
+// $payload = json_encode($data);
+// $ch = curl_init($url);
+// curl_setopt($ch, CURLOPT_POST, 1);
+// curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+// curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+// curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+// $response = curl_exec($ch);
+// curl_close($ch);
+// if ($response == false) {
+// echo "Sorry! Please try later , or call +91 9037631786";
+//  die();
+// } else {
+// $data = json_decode($response);
+// $homedata="";
+// if ($data !== null) {
+//     $homedata=$data->homedata;
+// } else {
+//     echo "Sorry ! Please try later , or call +91 9037631786";
+//  die();
+// }
+// }
 ?>
 <!DOCTYPE html>
 <html lang="en">
