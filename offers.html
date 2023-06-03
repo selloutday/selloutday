@@ -67,6 +67,8 @@
       window.open("https://www.facebook.com/profile.php?id=100092179158120", "_blank");
     }
   </script>
+
+
 </head>
 
 <body>
@@ -119,34 +121,9 @@
 
                 <!-- food 1 -->
                 <div class="tab-pane fade show active" id="food1" role="tabpanel" aria-labelledby="food1-tab">
-                    <div class="row">
+                    <div class="row" id="salman">
                         
-                     <?php
-                          foreach($homedata as $item){
-                       
-                            echo "<div class='col-xl-3 col-lg-3 col-md-6 wow fadeInUp' data-wow-delay='.6s' onclick=\"openWhatsApp('" . htmlspecialchars('Hi,'.$item->title, ENT_QUOTES) . " എന്ന പ്രൊഡക്ടിനെ കുറിച്ച് കൂടുതൽ വിവരങ്ങൾ പറയാമോ ?')\">";
-                            echo "<div class='single-dishes'>";
-                            echo "<div class='dish-img'>";
-                            echo "<img src='https://api.selloutday.in/alison/product/".$item->thumpid.".jpg' style='width: 200px;height:200px' alt=''>";
-                            echo "</div>";
-                            echo "<div class='dish-content'>";
-                            echo "<h5 style='font-size:18px'> ".$item->title."</h5>";
-                             
-                            echo "<span class='price'>MRP : <s style='color:red'>₹".$item->offerprice."</s> ₹".$item->offerprice."</span>";
-             
-                            echo "</div>";
-                            echo "<span class='badge badge-bg-color'>new</span>";
-                         
-                            echo "<div class='button-container'>";
-                            echo "<a href='#' class='rounded-button' onclick=\"openWhatsApp('" . htmlspecialchars('Hi,'.$item->title, ENT_QUOTES) . " എന്ന പ്രൊഡക്ടിനെ കുറിച്ച് കൂടുതൽ വിവരങ്ങൾ പറയാമോ ?')\" return false;>";
-                            echo "<i class='fab fa-whatsapp whatsapp-icon' style='font-size:30px'></i>";
-                            echo "ഓർഡർ ചെയ്യാം";
-                            echo "</a>";
-                            echo "</div>";
-                            echo "</div></div>";
-                        }
-
-                      ?>
+                    
                     </div>
                 </div>
             </div>
@@ -176,6 +153,30 @@
     <script src="assets/js/vendor/wow.min.js"></script>
     <script src="assets/js/main.js"></script>
 
+    <script>
+        fetch('https://api.selloutday.in/alison/user/getwebdata')
+        .then(response => response.text())
+        .then(data => {
+          // Process the PHP content here
+
+          var data1 = JSON.parse(data);
+          var homeData = data1.homedata;
+
+          var container = document.getElementById('salman');
+          container.innerHTML = '';
+          var dt='';
+          for (var i = 0; i < homeData.length; i++) {
+  var item = homeData[i];
+  dt += "<div class='col-xl-3 col-lg-3 col-md-6 wow fadeInUp' data-wow-delay='.6s' onclick=\"openWhatsApp('Hi," + item.title + " എന്ന പ്രൊഡക്ടിനെ കുറിച്ച് കൂടുതൽ വിവരങ്ങൾ പറയാമോ ?')\"><div class='single-dishes'><div class='dish-img'><img src='https://api.selloutday.in/alison/product/" + item.thumpid + ".jpg' style='width: 200px;height:200px' alt=''></div><div class='dish-content'><h5 style='font-size:18px'>" + item.title + "</h5><span class='price'>MRP : <s style='color:red'>₹" + item.ogprice + "</s> ₹" + item.offerprice + "</span></div><span class='badge badge-bg-color'>new</span><div class='button-container'><a href='#' class='rounded-button' onclick=\"openWhatsApp('Hi," + item.title + " എന്ന പ്രൊഡക്ടിനെ കുറിച്ച് കൂടുതൽ വിവരങ്ങൾ പറയാമോ ?'); return false;\"><i class='fab fa-whatsapp whatsapp-icon' style='font-size:30px'></i>ഓർഡർ ചെയ്യാം</a></div></div></div>";
+}
+
+           container.innerHTML = dt;
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+
+    </script>
 </body>
  
 </html>
